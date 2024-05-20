@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F4F4F4;
+}
+
+header {
+    background-color: #E0E0E0; 
+    color: white;
+    padding: 10px 0;
+    text-align: center;  
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.nav_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; 
+}
+
+.nav_bar .logo img {
+    height: 50px; 
+}
+
+.nav_bar .menu {
+    display: flex;
+    gap: 15px; 
+}
+
+.nav_bar .menu a {
+    color: 4CAF50;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.nav_bar .menu a:hover {
+    text-decoration: underline;
+}
