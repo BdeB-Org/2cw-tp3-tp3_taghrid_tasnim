@@ -53,13 +53,13 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    justify-content: center;
+   
 }
 
 .main-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    
 }
 
 .main-image img {
