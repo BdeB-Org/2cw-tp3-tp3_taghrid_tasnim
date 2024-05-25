@@ -101,6 +101,12 @@ CREATE TABLE utilisateur (
 
 ALTER TABLE utilisateur ADD CONSTRAINT utilisateur_pk PRIMARY KEY ( id_utilisateur );
 
+--Insertion des données
+INSERT INTO utilisateur (id_utilisateur, nom, email, mot_passe) VALUES
+(1, 'Alice Dupont', 'alice@example.com', 'password1'),
+(2, 'Bob Martin', 'bob@example.com', 'password2'),
+(3, 'Clara Bernard', 'clara@example.com', 'password3'),
+
 
 
 
