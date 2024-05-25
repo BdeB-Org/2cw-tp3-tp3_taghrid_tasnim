@@ -137,7 +137,7 @@ BEGIN
     p_enabled             => TRUE,
     p_schema              => 'RESTSCOTT',
     p_url_mapping_type    => 'BASE_PATH',
-    p_url_mapping_pattern => 'hr2',
+    p_url_mapping_pattern => 'bookshare',
     p_auto_rest_auth      => FALSE
   );
     
