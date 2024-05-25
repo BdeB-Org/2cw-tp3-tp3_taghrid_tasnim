@@ -1,9 +1,4 @@
 -- Généré par Oracle SQL Developer Data Modeler 23.1.0.087.0806
---   à :        2024-05-25 00:40:18 HAE
---   site :      Oracle Database 11g
---   type :      Oracle Database 11g
-
-
 
 -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 
@@ -11,9 +6,7 @@
 
 CREATE TABLE emprunt (
     id_emprunt                 NUMBER NOT NULL,
-    date_emprunt               VARCHAR2 
---  ERROR: VARCHAR2 size not specified 
-    ,
+    date_emprunt               VARCHAR2(30) NOT NULL 
     date_retour                VARCHAR2(20) NOT NULL,
     id_utilisateur             NUMBER(30) NOT NULL,
     livre_id                   NUMBER(30) NOT NULL,
@@ -35,6 +28,10 @@ INSERT INTO emprunt (id_emprunt, date_emprunt, date_retour, utilisateur_id_utili
 (8, '2024-05-15', '2024-05-29', 2, 8),
 (9, '2024-05-17', '2024-05-31', 3, 9),
 (10, '2024-05-19', '2024-06-02', 4, 10);
+COMMIT;
+
+SELECT *
+FROM emprunt;
 
 
 CREATE TABLE historique (
@@ -58,6 +55,11 @@ INSERT INTO historique (id_historique, emprunt_id, utilisateur_id_utilisateur) V
 (8, 8, 2),
 (9, 9, 3),
 (10, 10, 4);
+COMMIT;
+
+SELECT *
+FROM historique;
+
 
 
 CREATE TABLE livre (
@@ -65,9 +67,7 @@ CREATE TABLE livre (
     titre                      VARCHAR2(30) NOT NULL,
     auteur                     VARCHAR2(30),
     genre                      VARCHAR2(30),
-    statut                     VARCHAR2 
---  ERROR: VARCHAR2 size not specified 
-    ,
+    statut                     VARCHAR2(30), 
     utilisateur_id             NUMBER(30) NOT NULL,
     utilisateur_id_utilisateur NUMBER NOT NULL
 );
@@ -86,14 +86,16 @@ INSERT INTO livre (id_livre, titre, auteur, genre, statut, utilisateur_id_utilis
 (8, 'Germinal', 'Émile Zola', 'Roman', 'Disponible', 2),
 (9, 'Don Quichotte', 'Miguel de Cervantes', 'Classique', 'Disponible', 3),
 (10, 'Le Comte de Monte-Cristo', 'Alexandre Dumas', 'Classique', 'Disponible', 4);
+COMMIT;
+
+SELECT *
+FROM livre;
 
 
 CREATE TABLE utilisateur (
     id_utilisateur NUMBER NOT NULL,
     nom            VARCHAR2(50) NOT NULL,
-    email          VARCHAR2 
---  ERROR: VARCHAR2 size not specified 
-    ,
+    email          VARCHAR2(20),
     mot_passe      NUMBER(20)
 );
 
@@ -107,6 +109,10 @@ INSERT INTO utilisateur (id_utilisateur, nom, email, mot_passe) VALUES
 (4, 'David Leroy', 'david@example.com', 'password4'),
 (5, 'Eva Joubert', 'eva@example.com', 'password5'),
 (6, 'Franck Moreau', 'franck@example.com', 'password6');
+COMMIT;
+
+SELECT *
+FROM utilisateur;
 
 
 ALTER TABLE emprunt
@@ -125,3 +131,80 @@ ALTER TABLE livre
     ADD CONSTRAINT livre_utilisateur_fk FOREIGN KEY ( utilisateur_id_utilisateur )
         REFERENCES utilisateur ( id_utilisateur );
 
+-- Ceci va creer un URI sous le URL qui pourra etre utilise pour y activer les tables en mode REST
+BEGIN
+  ORDS.enable_schema(
+    p_enabled             => TRUE,
+    p_schema              => 'RESTSCOTT',
+    p_url_mapping_type    => 'BASE_PATH',
+    p_url_mapping_pattern => 'hr2',
+    p_auto_rest_auth      => FALSE
+  );
+    
+  COMMIT;
+END;
+/
+
+-- Activation de la table hotel pour acces REST
+BEGIN
+  ORDS.enable_object (
+    p_enabled      => TRUE, -- Default  { TRUE | FALSE }
+    p_schema       => 'RESTSCOTT',
+    p_object       => 'UTILISATEUR',
+    p_object_type  => 'TABLE', -- Default  { TABLE | VIEW }
+    p_object_alias => 'utilisateur'
+  );
+    
+  COMMIT;
+END;
+/
+
+-- Activation de la table personnel hotel pour acces REST
+BEGIN
+  ORDS.enable_object (
+    p_enabled      => TRUE, -- Default  { TRUE | FALSE }
+    p_schema       => 'RESTSCOTT',
+    p_object       => 'LIVRE',
+    p_object_type  => 'TABLE', -- Default  { TABLE | VIEW }
+    p_object_alias => 'livre'
+  );
+    
+  COMMIT;
+END;
+/
+
+-- Activation de la table client pour acces REST
+BEGIN
+  ORDS.enable_object (
+    p_enabled      => TRUE, -- Default  { TRUE | FALSE }
+    p_schema       => 'RESTSCOTT',
+    p_object       => 'EMPRUNT',
+    p_object_type  => 'TABLE', -- Default  { TABLE | VIEW }
+    p_object_alias => 'emprunt'
+  );
+    
+  COMMIT;
+END;
+/
+
+-- Activation de la table reservation pour acces REST
+BEGIN
+  ORDS.enable_object (
+    p_enabled      => TRUE, -- Default  { TRUE | FALSE }
+    p_schema       => 'RESTSCOTT',
+    p_object       => 'HISTORIQUE',
+    p_object_type  => 'TABLE', -- Default  { TABLE | VIEW }
+    p_object_alias => 'historique'
+  );
+    
+  COMMIT;
+END;
+/
+
+-- Confirmation de l'activation du schema
+SELECT *
+FROM user_ords_schemas;
+
+-- Confirmation de l'activation des tables pour REST
+SELECT *
+FROM   user_ords_enabled_objects;
