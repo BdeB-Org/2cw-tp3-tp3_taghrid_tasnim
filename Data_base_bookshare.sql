@@ -111,8 +111,9 @@ INSERT INTO utilisateur (id_utilisateur, nom, email, mot_passe) VALUES
 (6, 'Franck Moreau', 'franck@example.com', 'password6');
 COMMIT;
  
-
-
+ 
+ SELECT *
+FROM utilisateur;
 
 ALTER TABLE emprunt
     ADD CONSTRAINT emprunt_livre_fk FOREIGN KEY ( livre_id_livre )
