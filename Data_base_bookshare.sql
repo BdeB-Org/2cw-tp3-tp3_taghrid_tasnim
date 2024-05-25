@@ -74,22 +74,7 @@ CREATE TABLE livre (
 
 ALTER TABLE livre ADD CONSTRAINT livre_pk PRIMARY KEY ( id_livre );
 
---Insertion des données 
-INSERT INTO livre (id_livre, titre, auteur, genre, statut, utilisateur_id_utilisateur) VALUES 
-(1, 'Le Petit Prince', 'Antoine de Saint-Exupéry', 'Fiction', 'Disponible', 1),
-(2, '1984', 'George Orwell', 'Dystopie', 'Disponible', 2),
-(3, 'L\'Étranger', 'Albert Camus', 'Philosophie', 'Disponible', 3),
-(4, 'La Peste', 'Albert Camus', 'Fiction', 'Disponible', 4),
-(5, 'Les Misérables', 'Victor Hugo', 'Classique', 'Emprunté', 5),
-(6, 'Harry Potter à l\'école des sorciers', 'J.K. Rowling', 'Fantaisie', 'Disponible', 6),
-(7, 'Moby Dick', 'Herman Melville', 'Aventure', 'Disponible', 1),
-(8, 'Germinal', 'Émile Zola', 'Roman', 'Disponible', 2),
-(9, 'Don Quichotte', 'Miguel de Cervantes', 'Classique', 'Disponible', 3),
-(10, 'Le Comte de Monte-Cristo', 'Alexandre Dumas', 'Classique', 'Disponible', 4);
-COMMIT;
 
-SELECT *
-FROM livre;
 
 
 CREATE TABLE utilisateur (
