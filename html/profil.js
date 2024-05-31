@@ -1,7 +1,7 @@
 function loadProfile() {
-    const userId = 1; // Replace with dynamic user ID
+    
 
-    fetch(`http://localhost:8080/ords/restscott/bookshare/utilisateur/${userId}`)
+    fetch(`http://localhost:8080/ords/restscott/bookshare/utilisateur`)
         .then(response => response.json())
         .then(data => {
             const profileInfo = document.getElementById('profileInfo');
