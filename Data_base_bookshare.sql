@@ -109,7 +109,7 @@ INSERT INTO utilisateur (id_utilisateur, nom, email, mot_passe) VALUES
 (4, 'David Leroy', 'david@example.com', 'password4'),
 (5, 'Eva Joubert', 'eva@example.com', 'password5'),
 (6, 'Franck Moreau', 'franck@example.com', 'password6');
-(7, 'Fanck Moeau', 'fanck@example.com', 'password7');
+
 COMMIT;
  
  SELECT *
