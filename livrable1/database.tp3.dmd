@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="database.tp3" id="ECF621E4-7E0E-8A17-BB7D-1E6C39ADF417" version="3.5">
+<createdBy>Conco</createdBy>
+<createdTime>2024-05-25 01:52:05 UTC</createdTime>
+<ownerDesignName>database.tp3</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>ECF621E4-7E0E-8A17-BB7D-1E6C39ADF417</designId>
+</OSDM_Design>
