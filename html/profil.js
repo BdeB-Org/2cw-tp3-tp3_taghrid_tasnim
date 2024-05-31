@@ -1,6 +1,5 @@
 function loadProfile() {
     
-
     fetch(`http://localhost:8080/ords/restscott/bookshare/utilisateur`)
         .then(response => response.json())
         .then(data => {
