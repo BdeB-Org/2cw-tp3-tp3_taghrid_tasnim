@@ -145,7 +145,7 @@ BEGIN
 END;
 /
 
--- Activation de la table hotel pour acces REST
+-- Activation de la table utilisateur pour acces REST
 BEGIN
   ORDS.enable_object (
     p_enabled      => TRUE, -- Default  { TRUE | FALSE }
@@ -159,7 +159,7 @@ BEGIN
 END;
 /
 
--- Activation de la table personnel hotel pour acces REST
+-- Activation de la table livre hotel pour acces REST
 BEGIN
   ORDS.enable_object (
     p_enabled      => TRUE, -- Default  { TRUE | FALSE }
@@ -173,7 +173,7 @@ BEGIN
 END;
 /
 
--- Activation de la table client pour acces REST
+-- Activation de la table emprunt pour acces REST
 BEGIN
   ORDS.enable_object (
     p_enabled      => TRUE, -- Default  { TRUE | FALSE }
@@ -187,7 +187,7 @@ BEGIN
 END;
 /
 
--- Activation de la table reservation pour acces REST
+-- Activation de la table historique pour acces REST
 BEGIN
   ORDS.enable_object (
     p_enabled      => TRUE, -- Default  { TRUE | FALSE }
